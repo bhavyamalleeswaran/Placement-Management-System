@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placement Management System</title>
+    <link rel="stylesheet" href="{% static 'placement/style.css' %}">
+</head>
+<body>
+
+    <h1>Placement Management System</h1>
+    <p>Manage Students, Companies and Placements</p>
+
+    <button onclick="loadStudents()">Students</button>
+    <button onclick="loadCompanies()">Companies</button>
+    <button onclick="loadPlacements()">Placements</button>
+
+    <!-- ================= STUDENTS ================= -->
+    <h2>Student Details</h2>
+
+    <form id="studentForm" onsubmit="saveStudent(event)">
+        <input type="hidden" id="s_id">
+        <input type="text" id="s_name" placeholder="Name" required>
+        <input type="email" id="s_email" placeholder="Email" required>
+        <input type="text" id="s_phone" placeholder="Phone" required>
+        <input type="text" id="s_department" placeholder="Department" required>
+        <input type="number" id="s_year" placeholder="Year" required>
+        <input type="number" step="0.01" id="s_cgpa" placeholder="CGPA" required>
+        <input type="text" id="s_skills" placeholder="Skills (comma separated)" required>
+        <button type="submit" id="s_submitBtn">Add Student</button>
+        <button type="button" id="s_cancelBtn" onclick="resetStudentForm()" style="display:none;">Cancel Edit</button>
+    </form>
+
+    <div id="students"></div>
+
+    <!-- ================= COMPANIES ================= -->
+    <h2>Company Details</h2>
+
+    <form id="companyForm" onsubmit="saveCompany(event)">
+        <input type="hidden" id="c_id">
+        <input type="text" id="c_name" placeholder="Company Name" required>
+        <input type="text" id="c_location" placeholder="Location" required>
+        <input type="text" id="c_role" placeholder="Job Role" required>
+        <input type="number" id="c_package" placeholder="Package" required>
+        <input type="number" step="0.01" id="c_cgpa" placeholder="Eligibility CGPA" required>
+        <button type="submit" id="c_submitBtn">Add Company</button>
+        <button type="button" id="c_cancelBtn" onclick="resetCompanyForm()" style="display:none;">Cancel Edit</button>
+    </form>
+
+    <div id="companies"></div>
+
+    <!-- ================= PLACEMENTS ================= -->
+    <h2>Placement Details</h2>
+
+    <form id="placementForm" onsubmit="savePlacement(event)">
+        <input type="hidden" id="p_id">
+        <input type="date" id="p_date" required>
+        <input type="text" id="p_status" placeholder="Status" required>
+        <select id="p_student" required>
+            <option value="">Select Student</option>
+        </select>
+        <select id="p_company" required>
+            <option value="">Select Company</option>
+        </select>
+        <button type="submit" id="p_submitBtn">Add Placement</button>
+        <button type="button" id="p_cancelBtn" onclick="resetPlacementForm()" style="display:none;">Cancel Edit</button>
+    </form>
+
+    <div id="placements"></div>
+
+    <script src="{% static 'placement/app.js' %}"></script>
+</body>
+</html>
